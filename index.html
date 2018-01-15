@@ -65,7 +65,9 @@
         };
 
         function updateSettings(data) {
-            for (var key in data) {
+            var result = JSON.parse(data);
+            console.log(result);
+            for (var key in result) {
                 settings[key] = data[key];
             }
         }
