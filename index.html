@@ -66,17 +66,15 @@
 
 
         function updateSettings(data) {
-            console.log(typeof data);
-            var result = JSON.parse(data);
+            if (typeof data === "object") {
+                var result = JSON.parse(data);
 
-            for (var key in result) {
-                settings[key] = result[key];
+                for (var key in result) {
+                    settings[key] = result[key];
+                }
             }
-
-//            console.log(settings);
         }
 
-        //        updateSettings({"fullscreen": false, "name": "Bla-bla"});
         TradingView.onready(function () {
             document.addEventListener("message", function (event) {
                 console.log(event.data);
@@ -96,7 +94,6 @@
 </head>
 
 <body style="margin:0px;">
-
 <div id="tv_chart_container"></div>
 </body>
 
