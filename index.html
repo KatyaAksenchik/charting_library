@@ -35,7 +35,7 @@
 
 
         var settings = {
-            fullscreen: false,
+            fullscreen: true,
             symbol: config.symbol ? config.symbol : 'XAUUSD',
             interval: config.interval ? config.interval : 'D',
             container_id: "tv_chart_container",
@@ -64,19 +64,19 @@
             timezone: 'Europa/Minsk',
         };
 
-//        function updateSettings(data) {
+        function updateSettings(data) {
 //            var result = JSON.parse(data);
 //            console.log(result);
-//            for (var key in result) {
-//                settings[key] = data[key];
-//            }
-//        }
+            for (var key in data) {
+                settings[key] = data[key];
+            }
+        }
 
         TradingView.onready(function () {
             document.addEventListener("message", function (event) {
                 console.log(event.data);
-//                updateSettings(event.data);
-//                console.log("SETTINGS", settings);
+                updateSettings(event.data);
+                console.log("SETTINGS", settings);
 
                 var widget = window.tvWidget = new TradingView.widget(settings);
 //                console.log(widget);
