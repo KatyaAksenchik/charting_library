@@ -66,10 +66,13 @@
 
         TradingView.onready(function () {
             document.addEventListener("message", function (event) {
+                console.log(event.data);
                 settings.fullscreen = event.data;
 
+                console.log("SETTINGS", settings);
+
                 var widget = window.tvWidget = new TradingView.widget(settings);
-                console.log(widget);
+//                console.log(widget);
 
                 widget.onChartReady(function () {
                     $("iframe").contents().find(".onchart-tv-logo").remove();
