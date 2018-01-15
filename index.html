@@ -64,14 +64,19 @@
             timezone: 'Europa/Minsk',
         };
 
+
         function updateSettings(data) {
-//            var result = JSON.parse(data);
-//            console.log(result);
-            for (var key in data) {
-                settings[key] = data[key];
+            console.log(typeof data);
+            var result = JSON.parse(data);
+
+            for (var key in result) {
+                settings[key] = result[key];
             }
+
+//            console.log(settings);
         }
 
+        //        updateSettings({"fullscreen": false, "name": "Bla-bla"});
         TradingView.onready(function () {
             document.addEventListener("message", function (event) {
                 console.log(event.data);
@@ -79,7 +84,7 @@
                 console.log("SETTINGS", settings);
 
                 var widget = window.tvWidget = new TradingView.widget(settings);
-//                console.log(widget);
+                //                console.log(widget);
 
                 widget.onChartReady(function () {
                     $("iframe").contents().find(".onchart-tv-logo").remove();
