@@ -24,7 +24,7 @@ TradingView.onready(function () {
         allow_symbol_change: false,
         //	BEWARE: no trailing slash is expected in feed URL
         datafeed: new Datafeeds.UDFCompatibleDatafeed(config.url, 15000, config.type, config.description),
-        library_path: "charting_library/charting_library/",
+        library_path: "charting_library/",
         locale: getParameterByName('lang') || "en",
         custom_css_url: 'custom.css',
         //	Regression Trend-related functionality is not implemented yet, so it's hidden for a while
